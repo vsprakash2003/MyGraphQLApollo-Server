@@ -1,0 +1,33 @@
+{
+    "model":"department",
+    "Details": [
+        {
+            "department_id"  : "1",
+            "name":"Corporate Security"
+        },
+        {
+            "department_id"  : "2",
+            "name":"Engineering"
+        },
+        {
+            "department_id"  : "3",
+            "name":"Finance"
+        },
+        {
+            "department_id"  : "4",
+            "name":"Human Resources"
+        },
+        {
+            "department_id"  : "5", 
+            "name":"Marketing"
+        },
+        {
+            "department_id"  : "6",
+            "name":"Product Strategy"
+        },
+        {
+            "department_id"  : "7",
+            "name":"Program Management"
+        }
+    ]
+}
