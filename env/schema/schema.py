@@ -2,7 +2,7 @@ from os import path
 import graphene
 from model.department import Department as DepartmentModel
 from .query_types import Department, Employee
-from .mutations import AddDepartment
+from .mutations import AddDepartment, EditDepartment
 
 import logging
 
@@ -77,6 +77,7 @@ class Query(graphene.ObjectType):
 class Mutation(graphene.ObjectType):
     logger.info("Inside mutation class of schema")
     add_dept = AddDepartment.Field()
+    edit_dept = EditDepartment.Field()
 
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
