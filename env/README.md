@@ -82,3 +82,13 @@ python3 data_Setup.py
 ```bash
 python3 ./app.py
 ```
+## for creating docker container
+1. Add gunicorn to requirements.txt (gunicorn is the http server for flask applications)
+2. Create dockerfile, .dockerignore and gunicorn_config.py files
+3. Create a docker bridge (if not already exists and only if needed. This is to connect 2 containers)
+4. Do docker build (this will install all packages from requirements.txt)
+5. Run docker container and add to bridge
+
+`docker network create -d bridge Myappbridge`
+`docker build . -t python-docker`
+`docker run --rm --network=Myappbridge -d -p 5000:5000 --name Myserverdocker python-docker`
