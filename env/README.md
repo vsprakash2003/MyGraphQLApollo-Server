@@ -115,3 +115,11 @@ python3 ./app.py
 `docker network create -d bridge Myappbridge`
 `docker build . -t python-docker`
 `docker run --rm --network=Myappbridge -d -p 5000:5000 --name Myserverdocker python-docker`
+
+## for creating docker container (production)
+1. Create dockerfile, .dockerignore and nginx.conf files
+2. Create the build file (this avoids running npm install in docker)
+3. Create docker-compose.yml file (this will run dockerfile)
+4. Create launch.sh shell script to bring up docker-compose file
+
+`sh launch.sh`
