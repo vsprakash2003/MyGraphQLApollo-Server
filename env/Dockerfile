@@ -1,9 +1,8 @@
 FROM python:3.7-alpine
 
 RUN apk update \
-  && apk add \
-  build-base \
-  sqlite3 
+  && apk add --update sqlite\
+  build-base
 
 RUN mkdir -p /opt/Myapps/GraphQL-App
 WORKDIR /opt/Myapps/GraphQL-App

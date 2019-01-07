@@ -82,6 +82,29 @@ python3 data_Setup.py
 ```bash
 python3 ./app.py
 ```
+## Add gitignore file 
+   `touch .gitignore`
+
+## Git commands
+### for master branch
+`git init`
+`git add .`
+`git commit -m "first commit"`
+`git remote add https://github.com/vsprakash2003/MyGraphQLApollo-Server.git`
+`git push -u origin master` 
+
+### for coding branch
+`git checkout -b origin/c/{branch name}`
+`git add .`
+`git commit -m "second commit"
+`git push -u origin origin/c/{branch name}`
+
+### for merging code branch to master
+`git checkout master`
+`git pull origin master`
+`git merge origin/c/{branch name}`
+`git push -u origin master`
+
 ## for creating docker container
 1. Add gunicorn to requirements.txt (gunicorn is the http server for flask applications)
 2. Create dockerfile, .dockerignore and gunicorn_config.py files

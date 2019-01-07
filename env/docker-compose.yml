@@ -1,11 +1,5 @@
 version: '3.7'
 services:
-  sqlite3:
-    image: nouchka/sqlite3
-    ports:
-    - 5434:5432
-    volumes:
-    - MyGraphQLApp-sqlite3:/var/lib/sqlite3/data
   server:
     build:
       context: ./
@@ -25,5 +19,3 @@ services:
       FLASK_DEBUG: 1
       FLASK_ENV: docker
       PYTHONUNBUFFERED: 1
-volumes:
-  MyGraphQLApp-sqlite3:
