@@ -123,3 +123,46 @@ python3 ./app.py
 4. Create launch.sh shell script to bring up docker-compose file
 
 `sh launch.sh`
+
+## for deploying docker containers in google cloud using Kubernetes
+1. Setup account in google app engine
+2. Create a project and a bucket
+3. Install google cloud SDK
+4. Set default configurations like project code and zone in the CLI
+5. Login to docker from CLI
+6. Tag the 2 images (client and server)
+7. Push the images to docker hub with updated tags
+8. Create clusters with 2 nodes using glcoud CLI
+9. Provide Kubernetes with your docker hub user id and password credentials to pull images
+10.Upload the my-graphql-server-pod.yaml using Kubernetes CLI from where this file resides
+11.Curl the LoadBalancer Ingress (external ip) IP and verify it is working
+
+## commands for installing and setting up docker images in google cloud
+### {} braces refer to your instances like projects, user id, naming etc.
+`xcode-select —install`
+`glcoud init`
+`gcloud config set project {your google cloud project id}`
+`gcloud config set compute/zone {google cloud region you selected}`
+`gcloud auth configure-docker`
+`docker login`
+`docker tag mydocker_client:latest {your docker user name}/dockerhub:{myfirstclientimagepush}`
+`docker push {your docker user name}/dockerhub:{myfirstclientimagepush}`
+`docker tag mydocker_server:latest {your docker user name}/dockerhub:{myfirstserverimagepush}`
+`docker push {your docker user name}/dockerhub:{myfirstserverimagepush}`
+`gcloud container clusters create mygraphql-cluster --num-nodes=2`
+`kubectl create secret docker-registry {provide a credential name here}` `--docker-server=https://index.docker.io/v1/ --docker-username={your docker user name}` `--docker-password={your dockerhub password} --docker-email={email id used for dockerhub}`
+`kubectl create -f my-graphql-server-pod.yaml`
+
+## some additional commands for viewing, deleting stuff
+`gsutil acl get gs://{your google cloud project url}` to get access control list
+`docker rmi {your docker user name}/dockerhub:{myfirstimagepush}` to delete an existing image
+`cat ~/.docker/config.json` to view config file from docker. This file has good details
+`kubectl get secret {credential name you gave} --output=yaml` to view credentials imported
+`kubectl get secret {credential name you gave} --output="jsonpath={.data.\.dockerconfigjson}" | base64 --decode` to decode the base 64 encoded output from previous command
+`kubectl delete service mygraphql-service --grace-period=30` to delete a service
+`kubectl delete pod mygraphql-container --grace-period=30` to delete a pod
+`kubectl get pods` to get details on a pod
+`kubectl get service {service name}` to get details on the service
+`kubectl describe pods` to get more indepth information on the pod
+`kubectl get service mygraphql-service` to view the external ip
+`curl {external ip}` to view response
