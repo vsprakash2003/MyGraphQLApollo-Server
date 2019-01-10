@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mygraphql-container
+  labels:
+    app: mygraphql-app 
+    release: "1.0" 
+spec:
+  containers:
+  - name: mygraphql-server-container
+    image: vsprakash2003/dockerhub:myfirstserverimagepush
+    ports: 
+    - containerPort: 5000
+  - name: mygraphql-client-container
+    image: vsprakash2003/dockerhub:myfirstclientimagepush
+    ports: 
+    - containerPort: 80
+  imagePullSecrets:
+  - name: mydockercred
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mygraphql-service
+spec:
+  selector:
+    app: mygraphql-app
+    release: "1.0"
+  ports:
+  - name: http
+    protocol: TCP
+    port: 5000
+    targetPort: 5000
+  - name: https
+    protocol: TCP
+    port: 3000
+    targetPort: 80
+  type: LoadBalancer
+
