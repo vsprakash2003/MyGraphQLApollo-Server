@@ -12,4 +12,4 @@ docker-compose -p Mydocker -f docker-compose.yml build
 docker-compose -p Mydocker -f docker-compose.yml run --rm -d --entrypoint="sh -c \"alembic upgrade head\""
 
 # Start web and server
-docker-compose -f docker-compose.yml up -d
+docker-compose -f docker-compose.yml -p Mydocker up -d
