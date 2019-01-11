@@ -1,5 +1,6 @@
 service: backend
 runtime: python37
+env: flex
 
 handlers:
   # This configures Google App Engine to serve the files in the app's static
