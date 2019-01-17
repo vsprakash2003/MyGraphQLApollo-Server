@@ -166,3 +166,19 @@ python3 ./app.py
 `kubectl describe pods` to get more indepth information on the pod
 `kubectl get service mygraphql-service` to view the external ip
 `curl {external ip}` to view response
+
+## for deploying application in google app engine
+1. Setup account in google app engine
+2. Create a project and a bucket
+3. Install google cloud SDK
+4. Update the app.yaml file
+5. Deploy the application 
+6. Browse the deployed application using the URL which you can obtain from the terminal after the app is deployed
+
+## commands for deploying the application in google app engine
+`gcloud app deploy`
+`gcloud app browse `
+### some points to note while deploying to google app engine
+1. Specify runtime as 'custom' and env as 'flex'
+2. When runtime is specified as 'custom', google app engine will look for a dockerfile or docker-compose file to build and run docker
+3. App engine is like a 'PaaS' layer while compute engine is a 'IaaS'
