@@ -93,7 +93,7 @@ python3 ./app.py
 git init
 git add .
 git commit -m "first commit"
-git remote add https://github.com/vsprakash2003/MyGraphQLApollo-Server.git`
+git remote add origin https://github.com/vsprakash2003/MyGraphQLApollo-Server.git`
 git push -u origin master
 ``` 
 
